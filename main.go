@@ -41,18 +41,37 @@ func addOrder() {
 }
 
 func editOrder() {
+	// fmt.Println("Masukkan ID pesanan yang ingin diedit:")
+	// var id int
+	// fmt.Scanln(&id)
+
+	// for i, order := range orders {
+	// 	if order.ID == id {
+	// 		fmt.Println("Pesanan ditemukan, masukkan item baru:")
+	// 		var itemsInput string
+	// 		fmt.Scanln(&itemsInput)
+	// 		orders[i].Items = []string{itemsInput}
+
+	// 		fmt.Println("Pesanan berhasil diupdate!")
+	// 		return
+	// 	}
+	// }
+	// fmt.Println("Pesanan tidak ditemukan!")
 	fmt.Println("Masukkan ID pesanan yang ingin diedit:")
 	var id int
 	fmt.Scanln(&id)
 
 	for i, order := range orders {
 		if order.ID == id {
-			fmt.Println("Pesanan ditemukan, masukkan item baru:")
+			fmt.Println("Pesanan ditemukan, item saat ini:", orders[i].Items)
+			fmt.Println("Masukkan item baru untuk ditambahkan:")
 			var itemsInput string
 			fmt.Scanln(&itemsInput)
-			orders[i].Items = []string{itemsInput}
 
-			fmt.Println("Pesanan berhasil diupdate!")
+			newItems := []string{itemsInput}
+			orders[i].Items = append(orders[i].Items, newItems...)
+
+			fmt.Println("Item berhasil ditambahkan ke pesanan!")
 			return
 		}
 	}
